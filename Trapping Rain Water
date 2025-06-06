@@ -12,6 +12,7 @@ class Solution {
                 res+=(lmax-height[l]);
                 l++;
             }
+
             else
             {
                 res+=(rmax-height[r]);
