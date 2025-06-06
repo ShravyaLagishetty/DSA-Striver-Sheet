@@ -18,7 +18,6 @@ class Solution {
             l++;
             r=l+1;
         }
-
         return arr;
     }
 }
