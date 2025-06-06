@@ -1,0 +1,46 @@
+class Solution {
+    public int[] sortArray(int[] nums) {
+        mergesort(nums,0,nums.length-1);
+        return nums;
+
+    }
+    public void mergesort(int nums[],int lb,int ub)
+    {
+        if(lb<ub)
+        {
+            int mid=(lb+ub)/2;
+            mergesort(nums,lb,mid);
+            mergesort(nums,mid+1,ub);
+            merge(nums,lb,mid,ub);
+        }
+    }
+    public void merge(int nums[],int lb,int mid,int ub)
+    {
+        int i=lb;
+        int j=mid+1;
+        int k=lb;
+        int b[]=new int[nums.length];
+        while(i<=mid && j<=ub)
+        {
+            if(nums[i]<=nums[j])
+            {
+                b[k++]=nums[i++];
+            }
+            else
+            {
+                b[k++]=nums[j++];
+            }
+        }
+        while (i <= mid) {
+            b[k++] = nums[i++];
+        }
+
+        while (j <= ub) {
+            b[k++] = nums[j++];
+        }
+        for (int x = lb; x <=ub; x++) {
+            nums[ x] = b[x];
+        }
+       
+    }
+}
