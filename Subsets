@@ -1,0 +1,28 @@
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> ans=new ArrayList<>();
+        List<Integer> output=new ArrayList<>();
+        int index=0;
+        solve(nums,ans,index,output);
+
+        return ans;
+    }
+    void solve(int[] nums, List<List<Integer>> ans,int index,List<Integer> output)
+    {
+        if(index>=nums.length)
+        {
+            ans.add(new ArrayList<>(output));
+            return;
+        }
+
+        //exclude
+        solve(nums,ans,index+1,output);
+
+        //include
+        int ele=nums[index];
+        output.add(ele);
+        solve(nums,ans,index+1,output);
+        output.remove(output.size()-1);
+
+    }
+}
